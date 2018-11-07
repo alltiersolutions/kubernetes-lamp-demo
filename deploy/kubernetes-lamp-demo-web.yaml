@@ -1,0 +1,39 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kubernetes-lamp-demo-web
+  namespace: alltiersolutions
+  labels:
+    app: kubernetes-lamp-demo
+spec:
+  selector:
+    matchLabels:
+      app: kubernetes-lamp-demo
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kubernetes-lamp-demo
+        tier: frontend
+    spec:
+      containers:
+      - name: kubernetes-lamp-demo-web
+        image: hub.docker.com/alltiersolutions/kubernetes-lamp-demo-web:$GIT_SHORT_COMMIT
+        env:
+        - name: MYSQL_DATABASE
+          value: lampdemo
+        - name: MYSQL_USER
+          value: dbuser
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kubernetes-lamp-demo-mysql-dbuser-pass
+              key: password
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+      securityContext:
+          readOnlyRootFilesystem: true

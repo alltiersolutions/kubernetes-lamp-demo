@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kubernetes-lamp-demo-db-pv-claim
+  namespace: alltiersolutions
+  labels:
+    app: kubernetes-lamp-demo
+    tier: backend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: default-storage
+  volumeName: kubernetes-lamp-demo-db-pv
