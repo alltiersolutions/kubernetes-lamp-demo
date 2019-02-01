@@ -12,7 +12,7 @@ node {
 
     stage('Build Container') {
 
-        docker.withRegistry('https://hub.docker.com', 'docker_registry') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker_registry') {
           // Web Image
           def frontendImage = docker.build("hub.docker.com/alltiersolutions/kubernetes-lamp-demo-web:${env.GIT_SHORT_COMMIT}", '--no-cache --pull ./frontend')
           frontendImage.push()
