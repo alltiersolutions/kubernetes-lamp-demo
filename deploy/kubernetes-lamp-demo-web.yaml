@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: kubernetes-lamp-demo-web
-        image: hub.docker.com/alltiersolutions/kubernetes-lamp-demo-web:$GIT_SHORT_COMMIT
+        image: alltiersolutions/kubernetes-lamp-demo-web:$GIT_SHORT_COMMIT
         env:
         - name: MYSQL_DATABASE
           value: lampdemo
