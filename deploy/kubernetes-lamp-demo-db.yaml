@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: kubernetes-lamp-demo-db
-        image: hub.docker.com/alltiersolutions/kubernetes-lamp-demo-db:$GIT_SHORT_COMMIT
+        image: alltiersolutions/kubernetes-lamp-demo-db:$GIT_SHORT_COMMIT
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:

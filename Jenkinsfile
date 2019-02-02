@@ -12,15 +12,15 @@ node {
 
     stage('Build Container') {
 
-        docker.withRegistry('https://hub.docker.com', 'docker_registry') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker_registry') {
           // Web Image
-          def frontendImage = docker.build("hub.docker.com/alltiersolutions/kubernetes-lamp-demo-web:${env.GIT_SHORT_COMMIT}", '--no-cache --pull ./frontend')
+          def frontendImage = docker.build("alltiersolutions/kubernetes-lamp-demo-web:${env.GIT_SHORT_COMMIT}", '--no-cache --pull ./frontend')
           frontendImage.push()
-          frontendImage.push('latest')
+          //frontendImage.push('latest')
           // DB Image
-          def backendImage = docker.build("hub.docker.com/alltiersolutions/kubernetes-lamp-demo-db:${env.GIT_SHORT_COMMIT}", '--no-cache --pull ./backend')
+          def backendImage = docker.build("alltiersolutions/kubernetes-lamp-demo-db:${env.GIT_SHORT_COMMIT}", '--no-cache --pull ./backend')
           backendImage.push()
-          backendImage.push('latest')
+          //backendImage.push('latest')
         }
       }
     stage('Push to cluster') {
