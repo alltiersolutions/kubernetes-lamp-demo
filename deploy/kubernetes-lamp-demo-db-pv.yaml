@@ -11,6 +11,6 @@ spec:
   capacity:
     storage: 2Gi
   hostPath:
-    path: /nfsroot/docker/alltiersolutions/kubernetes-lamp-demo/mysqldata
+    path: /data/alltiersolutions/kubernetes-lamp-demo/mysqldata
   persistentVolumeReclaimPolicy: Retain
   storageClassName: default-storage
