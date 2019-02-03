@@ -1,8 +1,5 @@
 #!/usr/bin/env groovy
 
-
-// plan - get pipeline building on jenkins push to artifactory/docker, run there, get it working in docker. evaluate if it meets needs
-// issue - jenkins pull scm from tf setup with svnf
 node {
     // there is a place in jenkins to specify the branch to checkout.
     checkout scm // nothing more required as it is just files
